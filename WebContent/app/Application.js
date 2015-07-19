@@ -8,10 +8,10 @@ Ext.define('AccountsManager.Application', {
     ],
 
     controllers: [
-        // TODO: add controllers here
+        'AccountsManagerController'
     ],
 
     stores: [
-        // TODO: add stores here
+        'Accounts'
     ]
 });

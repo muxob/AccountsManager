@@ -1,13 +1,16 @@
 Ext.define('AccountsManager.view.AccountsGrid', {
     extend: 'Ext.grid.Panel',
     requires:[
-        'Ext.tab.Panel',
-        'Ext.layout.container.Border'
+        'Ext.grid.column.Number',
+        'Ext.grid.column.Date',
+        'Ext.grid.column.Action'
     ],
 
     xtype: 'accounts-grid',
 
     title: 'Accounts Manager',
+
+    store: 'Accounts',
 
     columns: [{
         xtype: 'numbercolumn',
