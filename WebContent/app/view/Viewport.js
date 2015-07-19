@@ -10,6 +10,6 @@ Ext.define('AccountsManager.view.Viewport', {
     },
 
     items: [{
-        xtype: 'app-main'
+        xtype: 'accounts-grid'
     }]
 });
