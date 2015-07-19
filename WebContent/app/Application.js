@@ -3,8 +3,13 @@ Ext.define('AccountsManager.Application', {
 
     extend: 'Ext.app.Application',
 
+    requires:[
+        'Ext.grid.plugin.RowEditing'
+    ],
+
     views: [
-        // TODO: add views here
+        'AccountsGrid',
+        'AccountForm'
     ],
 
     controllers: [

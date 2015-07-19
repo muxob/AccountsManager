@@ -1,8 +1,13 @@
 Ext.define('AccountsManager.view.AccountsGrid', {
     extend: 'Ext.grid.Panel',
     requires:[
+        'Ext.toolbar.Toolbar',
+        'Ext.toolbar.Paging',
+        'Ext.button.Button',
+        'Ext.toolbar.TextItem',
         'Ext.grid.column.Number',
         'Ext.grid.column.Date',
+        'Ext.form.field.Date',
         'Ext.grid.column.Action'
     ],
 
@@ -10,7 +15,36 @@ Ext.define('AccountsManager.view.AccountsGrid', {
 
     title: 'Accounts Manager',
 
+    forceFit: true,
+    columnLines: true,
+    viewConfig: {
+        stripeRows: true
+    },
+
+    dockedItems: [{
+        xtype: 'toolbar',
+        items: [{
+            itemId: 'add-btn',
+            icon: 'resources/add.png',
+            text: 'Add new account'
+        }, {
+            xtype: 'tbtext',
+            text: 'Click on any table row to edit the account'
+        }]
+    }, {
+        xtype: 'pagingtoolbar',
+        store: 'Accounts',
+        dock: 'bottom',
+        displayInfo: true
+    }],
+
     store: 'Accounts',
+
+    plugins: [
+        Ext.create('Ext.grid.plugin.RowEditing', {
+            clicksToEdit: 1
+        })
+    ],
 
     columns: [{
         xtype: 'numbercolumn',
@@ -76,6 +110,7 @@ Ext.define('AccountsManager.view.AccountsGrid', {
         hideable: false,
         menuDisabled: true,
         items: [{
+            icon: 'resources/delete.png',
             tooltip: 'Delete'
         }]
     }]
