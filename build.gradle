@@ -24,3 +24,28 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
+
+task buildSencha(type: Exec) {
+    inputs.files {
+        fileTree(dir: "WebContent")
+    }
+    outputs.files {
+        fileTree(dir: "WebContent/build/production/AccountsManager")
+    }
+    workingDir 'WebContent'
+    commandLine "sencha", "app", "build", "production"
+}
+
+task copySenchaBuild(type: Copy) {
+    from 'WebContent/build/production/AccountsManager'
+    into 'src/main/resources/static'
+}
+
+task cleanSenchaBuild(type: Delete) {
+    delete fileTree(dir: "WebContent/build")
+    delete fileTree(dir: "src/main/resources/static")
+}
+
+processResources.dependsOn copySenchaBuild
+copySenchaBuild.dependsOn buildSencha
+clean.dependsOn cleanSenchaBuild
