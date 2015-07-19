@@ -6,8 +6,8 @@ There is a task buildSencha to build the ExtJS application. This task requires S
 Clone the repo:
 git clone git@github.com:muxob/AccountsManager.git
 
- Build:
- gradlew clean build
+Build:
+gradlew clean build
 
- Run
- java -jar build/libs/AccountsManager.jar
+Run
+java -jar build/libs/AccountsManager.jar
