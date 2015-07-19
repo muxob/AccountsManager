@@ -111,7 +111,14 @@ Ext.define('AccountsManager.view.AccountsGrid', {
         menuDisabled: true,
         items: [{
             icon: 'resources/delete.png',
-            tooltip: 'Delete'
+            tooltip: 'Delete',
+            handler: function(gridView, rowIndex, colIndex, action, event, record) {
+                Ext.Msg.confirm('Delete', 'Are you sure you want to delete this account?', function(btn, text){
+                    if (btn == 'yes'){
+                        gridView.panel.fireEvent('deleteaccount', gridView.panel, record);
+                    }
+                });
+            }
         }]
     }]
 });
